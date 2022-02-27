@@ -54,9 +54,11 @@ corange.res: corange.rc
 clean:
 	rm $(OBJ) $(STATIC) $(DYNAMIC)
   
-install_unix: $(STATIC)
-	cp $(STATIC) /usr/local/lib/$(STATIC)
-  
+# Install linux libs to /usr/local/lib/...
+install_unix: $(STATIC) $(DYNAMIC)
+	cp $(STATIC) /usr/local/lib/x86_64-linux-gnu/$(STATIC)
+	cp $(DYNAMIC) /usr/local/lib/x86_64-linux-gnu/$(DYNAMIC)
+
 install_win32: $(STATIC)
 	cp $(STATIC) C:/MinGW/lib/$(STATIC)
   
